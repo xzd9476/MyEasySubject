@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.user.dao.UserDao">
+
+	<select id="findByNameAndPass" resultType="com.user.pojo.User"
+		parameterType="com.user.pojo.User">
+		select * from user where name=#{name} and password=#{password}
+	</select>
+	<insert id="insertOne">
+		insert into user(name,password) values(#{arg0},#{arg1})
+	</insert>
+	<select id="isExitUser" resultType="com.user.pojo.User">
+		select * from user where name=#{arg0} limit 0,1
+	</select>
+	<select id="checkpassword" resultType="com.user.pojo.User">
+		select * from user where name=#{arg0} and password=#{arg1} limit 0,1
+	</select>
+	<select id="getUserByName" resultType="com.user.pojo.User">
+		select * from user where name=#{arg0} limit 0,1
+	</select>
+	<!-- <select id="findall" resultType="com.pojo.Account"> select * from account 
+		</select> <update id="addmoney" parameterType="com.pojo.Account"> update 
+		account set money = money+#{money} where username=#{username} </update> <update 
+		id="deletemoney" parameterType="com.pojo.Account"> update account set money 
+		= money-#{money} where username=#{username} </update> -->
+</mapper>
