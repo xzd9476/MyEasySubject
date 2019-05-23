@@ -61,6 +61,7 @@ public class ChatAction {
 	/**
 	 * 接收转发图片
 	 * 
+	 * multpartfile处理文件上传
 	 * @param request
 	 * @param imageFile
 	 * @param userName
