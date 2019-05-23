@@ -40,6 +40,7 @@ public class ChatAction {
 
 	/*
 	 * 接受并且转发消息
+	 * @messagemapping用来处理stomp消息
 	 */
 	@MessageMapping("/chat/message")
 	public void receiveMessage(Message message) {
@@ -53,6 +54,7 @@ public class ChatAction {
 				.content(message.getContent()).messageType(MessageTypeEnum.TEXT.getCode()).createTime(new Date())
 				.build();
 		userService.addUserMessageRecord(messageRecordDo);
+		//广播给订阅用户
 		messaingTemplate.convertAndSend(SUBSCRIBE_MESSAGE_URL, message);
 	}
 
