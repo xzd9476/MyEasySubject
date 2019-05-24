@@ -93,7 +93,7 @@ function connect() {
 
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame){
-        stompClient.subscribe("/app/chat/participants", function (message) {
+        stompClient.subscribe("/app/chat/participants", function (message) {//stomp的subscribe订阅方法，若收到广播，调用function(message){}
             showActiveUserNumber(message.body);
             var user = "系统消息";
             var date = null;
